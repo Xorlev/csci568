@@ -9,12 +9,15 @@ SimpleSpreadsheetManager sm;
 String sUrl = "t6mq_WLV5c5uj6mUNSryBIA";
 String googleUser = GUSER;
 String googlePass = GPASS;
+PFont label;
   
 void setup() {
-    //This code happens once, right when our sketch is launched
-    size(800,800);
-    background(0);
-    smooth();
+  //This code happens once, right when our sketch is launched
+  size(800,800);
+  background(0);
+  smooth();
+
+  label = createFont("Helvetica", 24);
 
   int[] numbers = getNumbers();
   
@@ -69,7 +72,10 @@ void colorGrid(int[] nums, float x, float y, float s) {
   for (int i = 0; i < counts.length; i++) {
     colorMode(HSB);
     fill(counts[i]*30, 255, 255, counts[i]*30);
-    rect((i%10)*s, floor(i/10)*s, s, s);
+    //rect((i%10)*s, floor(i/10)*s, s, s);
+    textAlign(CENTER);
+    textFont(label);
+    text(i, (i%10)*s, floor(i/10)*s);
   }
   
   popMatrix();
