@@ -44,6 +44,13 @@ void barGraph(int[] nums, float y) {
   
   // Make bar graph
   for (int i = 0; i < counts.length; i++) {
+    colorMode(HSB);
+    fill(counts[i]*30,255,255);
     rect(i * 8, y, 7, -counts[i] * 10);
+  }
+  
+  for (int i = 1; i < 7; i++) {
+    int[] randoms = getRandomNumbers(225);
+    barGraph(randoms, 100 + (i * 130));
   }
 }
