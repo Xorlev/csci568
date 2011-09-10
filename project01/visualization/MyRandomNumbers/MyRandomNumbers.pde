@@ -44,6 +44,6 @@ void barGraph(int[] nums, float y) {
   
   // Make bar graph
   for (int i = 0; i < counts.length; i++) {
-    rect(i * 8, y, 8, -counts[i] * 10);
+    rect(i * 8, y, 7, -counts[i] * 10);
   }
 }
