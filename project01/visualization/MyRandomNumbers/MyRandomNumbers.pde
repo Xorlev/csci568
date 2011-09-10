@@ -21,18 +21,29 @@ void setup() {
   fill(255,40);
   noStroke();
   
-  // Google numbers
-  for (int i = 0; i < numbers.length; i++) {
-    ellipse(numbers[i] * 8, width/2, 8, 8);
-  }
-  
-  // A line of random numbers
-  for (int i = 0; i < numbers.length; i++) {
-    ellipse(ceil(random(0, 99)) * 8, height/2 + 20, 8, 8);
-  }
+  barGraph(numbers, 400);
 }
 
 void draw() {
   //This code happens once every frame.
 }
 
+void barGraph(int[] nums, float y) {
+  // Make a list of the number frequencies
+  int[] counts = new int[100];
+  
+  // Zero-init
+  for (int i = 1; i < 100; i++) {
+    counts[i] = 0;
+  }
+  
+  // Count nums
+  for (int i = 0; i < nums.length; i++) {
+    counts[nums[i]]++;
+  }
+  
+  // Make bar graph
+  for (int i = 0; i < counts.length; i++) {
+    rect(i * 8, y, 8, -counts[i] * 10);
+  }
+}
