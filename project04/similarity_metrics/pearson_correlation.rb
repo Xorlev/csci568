@@ -2,14 +2,12 @@ module SimilarityMetrics
   def pearson_correlation(one, two)
     xmean, xstddev = mean_and_standard_deviation(one)
     ymean, ystddev = mean_and_standard_deviation(two)
-    
-    puts xmean, xstddev
 
     [one,two].transpose.map do |pair| 
       zx = zscore(pair[0], xmean, xstddev)
       zy = zscore(pair[1], ymean, ystddev)
       zx*zy
-    end.reduce(:+)/one.length
+    end.reduce(:+)/one.size
   end
   
   def zscore(x, mean, stddev)
