@@ -1,0 +1,5 @@
+$LOAD_PATH << '.'
+require 'test/unit'
+require 'euclidean_distance_tests.rb'
+require 'simple_matching_coefficient_tests.rb'
+require 'jaccard_index_tests.rb'
