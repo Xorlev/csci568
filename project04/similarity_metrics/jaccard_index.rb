@@ -1,4 +1,4 @@
-module SimilarityMetrics
+module SimilarityMetrics  
   def jaccard_index(one, two)
     tp = [one,two].transpose
     
@@ -10,7 +10,10 @@ module SimilarityMetrics
     (m11)/(m01+m10+m11).to_f
   end
   
-  def map_transpose(transpose, &block)
-    transpose.map { |pair| block.call(pair) }.find_all{|x| x == true}.count
+  module Utility
+    def map_transpose(transpose, &block)
+      transpose.map { |pair| block.call(pair) }.find_all{|x| x == true}.count
+    end
   end
+  include Utility
 end

@@ -12,8 +12,10 @@ module SimilarityMetrics
     (p+s)/t.to_f
   end
   
-  def map_transpose(transpose, &block)
-    transpose.map { |pair| block.call(pair) }.find_all{|x| x == true}.count
+  module Utility
+    def map_transpose(transpose, &block)
+      transpose.map { |pair| block.call(pair) }.find_all{|x| x == true}.count
+    end
   end
-    
+  include Utility
 end
