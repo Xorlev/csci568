@@ -21,7 +21,7 @@ module SimilarityMetrics
 end
 
 
-class TestEuclideanDistance < Test::Unit::TestCase
+class TestSimpleMatchingCoefficient < Test::Unit::TestCase
   include SimilarityMetrics
   def test_same
     assert simple_matching_coefficient([true,true,true,true], [false,false,false,false]) == 0
