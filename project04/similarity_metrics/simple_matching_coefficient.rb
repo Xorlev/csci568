@@ -1,5 +1,3 @@
-require 'test/unit'
-
 module SimilarityMetrics
   def simple_matching_coefficient(one, two)
     tp = [one,two].transpose
@@ -18,20 +16,4 @@ module SimilarityMetrics
     transpose.map { |pair| block.call(pair) }.find_all{|x| x == true}.count
   end
     
-end
-
-
-class TestSimpleMatchingCoefficient < Test::Unit::TestCase
-  include SimilarityMetrics
-  def test_same
-    assert simple_matching_coefficient([true,true,true,true], [false,false,false,false]) == 0
-  end
-  
-  def test_one_similar
-    assert simple_matching_coefficient([true,true,true,true], [false,true,false,false]) == 0.25
-  end
-  
-  def test_five
-    assert simple_matching_coefficient([false,true,true,true,true], [false,true,false,true,false]) == 0.60
-  end
 end
