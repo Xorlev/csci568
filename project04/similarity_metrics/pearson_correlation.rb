@@ -3,9 +3,7 @@ module SimilarityMetrics
     xmean, xstddev = mean_and_standard_deviation(one)
     ymean, ystddev = mean_and_standard_deviation(two)
 
-    sum_xy = [one,two].transpose.map do |pair| 
-      pair[0]*pair[1]
-    end.reduce(:+)
+    sum_xy = [one,two].transpose.map { |x,y| x*y }.reduce(:+)
     
     (sum_xy-one.size*xmean*ymean)/((one.size-1)*xstddev*ystddev)
   end

@@ -2,10 +2,10 @@ module SimilarityMetrics
   def simple_matching_coefficient(one, two)
     tp = [one,two].transpose
     
-    p = map_transpose(tp) { |pair| pair[0] == true && pair[0] == pair[1] }
-    q = map_transpose(tp) { |pair| pair[0] == true && pair[1] == false }
-    r = map_transpose(tp) { |pair| pair[0] == false && pair[1] == true }
-    s = map_transpose(tp) { |pair| pair[0] == false && pair[0] == pair[1] }
+    p = map_transpose(tp) { |x,y| x == true && x == y }
+    q = map_transpose(tp) { |x,y| x == true && y == false }
+    r = map_transpose(tp) { |x,y| x == false && y == true }
+    s = map_transpose(tp) { |x,y| x == false && x == y }
     
     t = p + q + r + s
     
