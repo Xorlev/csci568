@@ -3,19 +3,15 @@ module SimilarityMetrics
     xmean, xstddev = mean_and_standard_deviation(one)
     ymean, ystddev = mean_and_standard_deviation(two)
 
-    [one,two].transpose.map do |pair| 
-      zx = zscore(pair[0], xmean, xstddev)
-      zy = zscore(pair[1], ymean, ystddev)
-      zx*zy
-    end.reduce(:+)/one.size
-  end
-  
-  def zscore(x, mean, stddev)
-    (x-mean)/stddev.to_f
+    sum_xy = [one,two].transpose.map do |pair| 
+      pair[0]*pair[1]
+    end.reduce(:+)
+    
+    (sum_xy-one.size*xmean*ymean)/((one.size-1)*xstddev*ystddev)
   end
   
   def mean(array)
-    array.inject(0) { |sum, x| sum += x } / array.size.to_f
+    array.reduce(:+) / array.size.to_f
   end
   
   def mean_and_standard_deviation(array)
