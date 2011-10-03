@@ -27,7 +27,8 @@ def kmeans(data, k, max_iterations=1000)
 end
 
 def random_centroids(data, n)
-  n.times.map { data[Random.rand(data.size-1)] }
+  # n times pick a random datapoint
+  n.times.map { data.sample }
 end
 
 # return centroid -> [points]
