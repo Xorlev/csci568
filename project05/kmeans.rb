@@ -63,13 +63,20 @@ end
 
 def sse(dict)
   vsse = []
+  
+  # For each cluster and its list of points...
   dict.each do |c, points|
     error = 0
+    
+    # For each point, add the square distance (from centroid->point) to the error
     points.each do |point|
       error += euclidean_distance(c, point)**2
     end
+    
+    # Add the rounded error to the list of SSEs
     vsse << error.round(3)
   end
+  
   vsse
 end
 
