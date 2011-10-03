@@ -33,19 +33,28 @@ end
 
 # return centroid -> [points]
 def find_closest_centroids(centroids, array)
+  # Generate a new hash whose default element is an empty list
   dict = Hash.new {|h,k| h[k] = []}
 
+  # For each data point
   array.each do |point|
+    # Start the minimum distance at nil
     min_dist = nil
     min_c = []
   
+    # For every centroid
     centroids.each do |c|
+      # Calculate the distance between point and centroid
       dist = euclidean_distance(c, point)
+      
+      # If the dist is < the current, the point switches centroids
       if min_dist.nil? or dist < min_dist
         min_dist = dist
         min_c = c
       end
     end
+    
+    # Add the point to the given centroid's list
     dict[min_c] << point
   end
   
