@@ -31,7 +31,6 @@ def random_centroids(data, n)
   n.times.map { data.sample }
 end
 
-# return centroid -> [points]
 def find_closest_centroids(centroids, array)
   # Generate a new hash whose default element is an empty list
   dict = Hash.new {|h,k| h[k] = []}
@@ -58,6 +57,7 @@ def find_closest_centroids(centroids, array)
     dict[min_c] << point
   end
   
+  # return centroid -> [points]
   dict
 end
 
