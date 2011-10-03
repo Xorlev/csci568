@@ -74,11 +74,15 @@ def sse(dict)
 end
 
 def mean(array)
+  # Transpose the array elements, add them, divide by # of elements
+  # Returns an array of means for each dimension
   array.transpose.map { |d| d.reduce(:+).to_f/d.size }
 end
 
 def euclidean_distance(one, two)
-  # ignore the first field, assume it's instance#
+  # Transpose the array elements
+  # [[d1,d2], [d1,d2]] => [[d1, d1], [d2,d2]]
+  # Subtract and square each pair, sum, then take the sqrt (^0.5)
   [one,two].transpose.map { |x,y| (x-y)**2 }.reduce(:+)**0.5
 end
 
