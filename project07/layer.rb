@@ -1,3 +1,6 @@
+$LOAD_PATH << '.'
+require 'node'
+
 class Layer
   attr_accessor :nodes
   def initialize

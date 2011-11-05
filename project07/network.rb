@@ -1,3 +1,7 @@
+$LOAD_PATH << '.'
+require 'layer'
+require 'edge'
+
 class Network
   attr_accessor :input, :hidden, :output, :links
   def initialize
@@ -14,14 +18,14 @@ class Network
       @hidden.add_node
     end
     
-    @input.node.each do |s|
-      @hidden.node.each do |t|
+    @input.nodes.each do |s|
+      @hidden.nodes.each do |t|
         s.links << Edge.new(s,t)
       end
     end
     
-    @hidden.node.each do |s|
-      @output.node.each do |t|
+    @hidden.nodes.each do |s|
+      @output.nodes.each do |t|
         s.links << Edge.new(s,t)
       end
     end
@@ -33,3 +37,5 @@ class Network
   def train
   end
 end
+
+Network.new
