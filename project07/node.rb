@@ -1,9 +1,13 @@
 class Node
-  attr_accessor :weight
+  attr_accessor :links
   def initialize
-    @weight = -1 + rand(100)/50.0
+  end
+  
+  def add_link(edge)
+    @links << node
   end
   
   def activate?
+    # tanh?
   end
 end
