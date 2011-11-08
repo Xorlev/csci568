@@ -22,14 +22,14 @@ class Network
     @input.nodes.each do |s|
       @hidden.nodes.each do |t|
         s.links << Edge.new(s,t)
-        t.set_incoming_weight(s.links.last)
+        t.set_incoming_weight(s.links.last.weight)
       end
     end
     
     @hidden.nodes.each do |s|
       @output.nodes.each do |t|
         s.links << Edge.new(s,t)
-        t.set_incoming_weight(s.links.last)
+        t.set_incoming_weight(s.links.last.weight)
       end
     end
   end
@@ -57,11 +57,13 @@ class Network
       output << node.links.map { |l| l.weight*val }
     end
     
+    puts "X:" + output.inspect
+    
     # final weights
-    output = output.map { |l| l.reduce(:+) }
+    output = output.transpose.map { |l| l.reduce(:+) }
     
     if all
-      return [val, intermediate, input]
+      return [val, intermediate, output]
     else
       return output
     end
@@ -93,10 +95,12 @@ class Network
         #for each layer...
           #for each node...
           #for each connection
-        [@input, @hidden, @output].each_with_index do |layer, li|
+        [@hidden, @output].each_with_index do |layer, li|
           layer.nodes.each_with_index do |node, ni|
             node.links.each do |link|
-              new_weight = link.weight + 0.1*current_output[li][ni]*@incoming_weight
+              puts current_output.inspect
+              puts node, node.incoming_weight, '_'
+              new_weight = link.weight + 0.1*current_output[li+1][ni]*node.incoming_weight
               error += link.weight - new_weight
               link.weight = new_weight
             end

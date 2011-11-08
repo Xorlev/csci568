@@ -10,12 +10,12 @@ class NetworkTests < Test::Unit::TestCase
   
   def test_feed_forward_returns_values
     n = Network.new
-    assert_equal 2, n.feed_forward([0.1, -0.5, 1]).size, 'ANN must have 3 outputs'
+    assert_equal 3, n.feed_forward([0.1, -0.5, 1]).size, 'ANN must have 3 outputs'
   end
   
   def test_training
     n = Network.new
-    assert_equal 2, n.feed_forward([1.0, 0.25, -0.5]).size, 'ANN must be functioning'
+    assert_equal 3, n.feed_forward([1.0, 0.25, -0.5]).size, 'ANN must be functioning'
     
     n.train [1.0, 0.25, -0.5], [1.0, -1.0, 0]
     
