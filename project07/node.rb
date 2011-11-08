@@ -8,7 +8,7 @@ class Node
     @links << node
   end
   
-  def activate?
-    # tanh?
+  def activate? val
+    Math.tanh val > 0.4
   end
 end

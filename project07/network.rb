@@ -32,10 +32,32 @@ class Network
   end
   
   def feedforward(val)
+    intermediate = []
+    
+    # Take inputs and feed them through each input node
+    @input.nodes.zip(val).each do |node, val|
+      # For each input node's links, calculate a weight for output to next layer
+      intermediate << node.links.map { |l| l.weight*val }
+    end
+
+    #
+    # Inputs to the hidden layer
+    #
+    
+    # Collect the inputs to each hidden node and merge it with addition
+    intermediate = intermediate.transpose
+    intermediate = intermediate.map { |l| l.reduce(:+) }
+    
+    output = []
+    @hidden.nodes.zip(intermediate).each do |node, val|
+      # for each connection hidden->output, calculate the weighted output
+      output << node.links.map { |l| l.weight*val }
+    end
+    
+    # final weights
+    output = output.map { |l| l.reduce(:+) }
   end
   
   def train
   end
 end
-
-Network.new
