@@ -25,26 +25,34 @@ def none_or_int(p)
   (p.downcase != "none" && p.to_i) || nil
 end
 
-File.open('track1/genreData1.txt').each do |line|
-  Genre.create! :id => line.to_i
+Genre.transaction do
+  File.open('track1/genreData1.txt').each do |line|
+    Genre.create! :id => line.to_i
+  end
 end
 
-File.open('track1/artistData1.txt').each do |line|
-  Artist.create! :id => line.to_i
+Artist.transaction do
+  File.open('track1/artistData1.txt').each do |line|
+    Artist.create! :id => line.to_i
+  end
 end
 
-File.open('track1/albumData1.txt').each do |line|
-  album, artist, *genres = split_and_filter(line)
-  genres.map! { |g| Genre.find(g) }
+ActiveRecord::Base.transaction do
+  File.open('track1/albumData1.txt').each do |line|
+    album, artist, *genres = split_and_filter(line)
+    genres.map! { |g| Genre.find(g) }
 
-  Album.create! :id => album, :artist_id => artist, :genres => genres
+    Album.create! :id => album, :artist_id => artist, :genres => genres
+  end
 end
 
-File.open('track1/trackData1.txt').each do |line|
-  track, album, artist, *genres = split_and_filter(line)
-  genres.map! { |g| Genre.find(g) }
-  
-  Track.create! :id => track, :album_id => album, :artist_id => artist, :genres => genres
+ActiveRecord::Base.transaction do
+  File.open('track1/trackData1.txt').each do |line|
+    track, album, artist, *genres = split_and_filter(line)
+    genres.map! { |g| Genre.find(g) }
+    
+    Track.create! :id => track, :album_id => album, :artist_id => artist, :genres => genres
+  end
 end
 
 
