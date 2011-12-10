@@ -22,7 +22,7 @@ def split_and_filter(line)
 end
 
 def none_or_int(p)
-  (p.downcase != "none" && p != "0" && p.to_i) || nil
+  (p.downcase != "none" && p.to_i) || nil
 end
 
 File.open('track1/genreData1.txt').each do |line|
@@ -44,7 +44,7 @@ File.open('track1/trackData1.txt').each do |line|
   track, album, artist, *genres = split_and_filter(line)
   genres.map! { |g| Genre.find(g) }
   
-  Track.create! :id => track, :album_id => album, :artist_id => artist
+  Track.create! :id => track, :album_id => album, :artist_id => artist, :genres => genres
 end
 
 
