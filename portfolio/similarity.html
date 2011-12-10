@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Similarity Metrics: Michael Rose</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Data Mining Portfolio: Michael Rose</h1>
+  <h2>Similarity Metrics</h2>
+  <p class="introduction">
+  		Similarity metrics are used to find the proximity of two objects which have been mapped into an n-dimensional space. The more similar two objects are, the closer they are in space. Different metrics are used for different types of data and situations. Continuous data is treated much differently from binary data, and even in each of those categories there are metrics that are tailored to specific situations. These metrics are incredibly important as they are the core of (almost) every algorithm in Data Mining.
+  </p>
+  <h3>Euclidean Distance</h3>
+  <p>
+  	Euclidean Distance is one of the simplest similarity metrics, it returns the linear distance between two points. Using the distance formula learned in elementary mathematics applied in n-dimensions, it takes continous-valued points and returns a continous distance. This metric works by squaring the distance between each the point in each dimension (using the Pythagorean formula), summing these, and at the end taking the square root. Euclidean distance suffers from the shortfall of losing effectiveness as the number of dimensions is increased.
+  </p>
+  <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project04/similarity_metrics/euclidean_distance.rb"></script>
+
+  <h3>Cosine Similarity</h3>
+  <p>
+  	Cosine similarity is a more complex metric, generally used in finding the similarity of document word vectors generated from unstructured text data. Cosine similarity plots both vectors in place and finds the angle between them. Cosine similarity is defined on [-1, 1] with -1 being exactly opposite and 1 being exactly the same. Generally, a value of 0 means independence. Negative values are rarely seen in most applications as you cannot have negative wordcounts &mdash; though if used for continuous values, especially relative to some normal, negative similarities are possible. The metric works by taking the euclidean dot product of the two vectors <strong>a &middot; b</strong> which is equivalent to ||<strong>a</strong>|| ||<strong>b</strong>|| cos&theta;. The code below takes the <a href="http://en.wikipedia.org/wiki/Dot_product">dot product</a> of the two vectors divided by the product of the magnitudes (lengths) in order to isolate cos&theta;, our similarity metric.
+  </p>
+  <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project04/similarity_metrics/cosine_similarity.rb"></script>
+
+  <h3>Simple Matching Coefficient (SMC)</h3>
+  <p>
+    SMC is a metric used on binary data. This metric counts the number of matching attributes (both true or both false) over the total number of attributes. This metric is not appropriate for datasets with asymmetric distributions, such as market basket data. Using it on this kind of data will lead to extremely high matching scores due to most transactions consisting of few purchases with respect to the entire corpus of products any given store carries. The number of matching boolean falses will overwhelm the metric. For this kind of comparison, it is appropriate to use the <em>Jaccard Index</em>.
+  </p>
+  <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project04/similarity_metrics/simple_matching_coefficient.rb"></script>
+
+  <h3>Jaccard Index</h3>
+  <p>
+    Jaccard is similar to SMC in that it also is used on binary data. This metric is good for data such as market basket data with few matching attributes. It works by counting the number of matching boolean true attributes (m11) and dividing it by the number of attributes where one or the other is true (m01, m10) and the number of matching true attributes (m11). Note that it leaves out the number of non-matching attributes (m00).
+  </p>
+  <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project04/similarity_metrics/jaccard_index.rb"></script>
+
+  <h3>Pearson Correlation</h3>
+  <p>
+  	Pearson correlation, or Pearson product-moment correlation coefficient, is a method by which one can measure the linear dependence of some variable x on another variable y. It can be thought of as plotting the points in space and drawing a line of best fit between them, then applying the same line to the second object's points in space. It's useful in cases where data can be subjective, but trends are apparent, such as movie ratings. Alice can give movies ratings of 3-5 (3 being the worst movies, 5 being her favorite), while Bob can give ratings of 1-3, (3 being Bob's absolute favorite movies). Given movies in common between Alice and Bob, it's obvious that Bob's ratings of 3 1 2 match Alice's ratings of 5 3 4. Pearson Correlation will account for this.
+  </p>
+  <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project04/similarity_metrics/pearson_correlation.rb"></script>
+
+</div>
+</body>
+</html>
