@@ -12,4 +12,10 @@ ActiveRecord::Base.establish_connection(
 
 ActiveRecord::Base.logger = Logger.new(STDERR)
 
-puts Track.all
+Genre.delete_all
+
+File.open('track1/genreData1.txt').map do |line|
+	Genre.create! :id => line.to_i
+end
+
+puts Genre.all
