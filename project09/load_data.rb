@@ -22,7 +22,7 @@ def split_and_filter(line)
 end
 
 def none_or_int(p)
-  (p != "None" && p.to_i) || nil
+  (p.downcase != "none" && p != "0" && p.to_i) || nil
 end
 
 File.open('track1/genreData1.txt').each do |line|
