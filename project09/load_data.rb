@@ -10,7 +10,7 @@ ActiveRecord::Base.establish_connection(
   :database => 'kdd.db'
 )
 
-#ActiveRecord::Base.logger = Logger.new(STDERR)
+ActiveRecord::Base.logger = Logger.new(STDERR)
 
 Genre.delete_all
 Artist.delete_all
