@@ -35,12 +35,14 @@ end
 
 File.open('track1/albumData1.txt').each do |line|
   album, artist, *genres = split_and_filter(line)
+  genres.map! { |g| Genre.find(g) }
 
-  Album.create! :id => album, :artist_id => artist
+  Album.create! :id => album, :artist_id => artist, :genres => genres
 end
 
 File.open('track1/trackData1.txt').each do |line|
   track, album, artist, *genres = split_and_filter(line)
+  genres.map! { |g| Genre.find(g) }
   
   Track.create! :id => track, :album_id => album, :artist_id => artist
 end
