@@ -35,13 +35,13 @@
 
   <h3>Simple Matching Coefficient (SMC)</h3>
   <p>
-    SMC is a metric used on binary data. This metric counts the number of matching attributes (both true or both false) over the total number of attributes. This metric is not appropriate for datasets with asymmetric distributions, such as market basket data. Using it on this kind of data will lead to extremely high matching scores due to most transactions consisting of few purchases with respect to the entire corpus of products any given store carries. The number of matching boolean falses will overwhelm the metric. For this kind of comparison, it is appropriate to use the <em>Jaccard Index</em>.
+    SMC is a metric used on binary data. This metric counts the number of matching attributes (both true or both false) over the total number of attributes. This metric is not appropriate for datasets with asymmetric distributions, such as market basket data. Using it on this kind of data will lead to extremely high matching scores due to most transactions consisting of few purchases with respect to the entire corpus of products any given store carries. The number of matching boolean falses will overwhelm the metric. For this kind of comparison, it is appropriate to use the <em>Jaccard Index</em>. SMC will return a value between [0, 1], with 1 being identical and vice versa.
   </p>
   <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project04/similarity_metrics/simple_matching_coefficient.rb"></script>
 
   <h3>Jaccard Index</h3>
   <p>
-    Jaccard is similar to SMC in that it also is used on binary data. This metric is good for data such as market basket data with few matching attributes. It works by counting the number of matching boolean true attributes (m11) and dividing it by the number of attributes where one or the other is true (m01, m10) and the number of matching true attributes (m11). Note that it leaves out the number of non-matching attributes (m00).
+    Jaccard is similar to SMC in that it also is used on binary data. This metric is good for data such as market basket data with few matching attributes. It works by counting the number of matching boolean true attributes (m11) and dividing it by the number of attributes where one or the other is true (m01, m10) and the number of matching true attributes (m11). Note that it leaves out the number of non-matching attributes (m00). Jaccard will return a value between [0, 1], with 1 being identical and vice versa.
   </p>
   <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project04/similarity_metrics/jaccard_index.rb"></script>
 
