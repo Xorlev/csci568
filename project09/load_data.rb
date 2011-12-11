@@ -6,11 +6,13 @@ require 'logger'
 require 'models.rb'
 
 ActiveRecord::Base.establish_connection(
-  :adapter => 'sqlite3',
-  :database => 'kdd.db'
+  :adapter => 'mysql',
+  :username => 'root',
+  :password => '',
+  :database => 'kdd'
 )
 
-ActiveRecord::Base.logger = Logger.new(STDERR)
+#ActiveRecord::Base.logger = Logger.new(STDERR)
 
 Genre.delete_all
 Artist.delete_all
@@ -30,30 +32,30 @@ Genre.transaction do
     Genre.create! :id => line.to_i
   end
 end
-
+puts "Loading artists..."
 Artist.transaction do
   File.open('track1/artistData1.txt').each do |line|
     Artist.create! :id => line.to_i
   end
 end
-
-ActiveRecord::Base.transaction do
+puts "Loading album data..."
+#ActiveRecord::Base.transaction do
   File.open('track1/albumData1.txt').each do |line|
     album, artist, *genres = split_and_filter(line)
     genres.map! { |g| Genre.find(g) }
 
     Album.create! :id => album, :artist_id => artist, :genres => genres
   end
-end
-
-ActiveRecord::Base.transaction do
+#end
+puts "Loading track data..."
+#ActiveRecord::Base.transaction do
   File.open('track1/trackData1.txt').each do |line|
     track, album, artist, *genres = split_and_filter(line)
     genres.map! { |g| Genre.find(g) }
     
     Track.create! :id => track, :album_id => album, :artist_id => artist, :genres => genres
   end
-end
+#end
 
 
 puts Genre.all
