@@ -18,13 +18,24 @@
 <div class="container">
   <h1>Data Mining Portfolio: Michael Rose</h1>
   <h2>Data &amp; Data Quality</h2>
+  <p class="introduction">
+    As its name may suggest, Data Mining requires data. There's a lot of different kinds of data, but much of it can be abstracted down to Record-Based, Graph-Based, Ordered Data, or Unstructured Data.
+  </p>
 
   <h3>Dataset and Attribute Types</h3>
   <p>
+    The first dataset we'll explore is Record-Based data. This data is most prevalent in traditional contexts (especially corporate data warehouses). Generally, this data is what's known as Transaction-Based or Market Basket Data. One attribute includes a set of different values. Many times this data is sparse (nobody buys the whole store, except perhaps Oprah: she'll be our outlier) and many times binary-type data. An example of this would be: "Consumer 223989 bought milk, eggs, and cereal." perhaps this is represented as 3 1's in a set of 2500 0's. This kind of data is well represented by sparse matices. Another datatype is Graph-Based data. In Graphs, we have objects and we have relationships between them. Graph-Based data is somewhat more common than it might seem: complex relationships in databases (especially <em>relational</em> databases) are well modeled by graphs (and vice versa). Ordered Data is also quite common and comes in a variety of different flavors. You might have sequential data which is generally temporal data indexed by timestamps, sequence data which has an order but not necessarily any meaningful timestamp associated with it, spatial data which is tied to some location such as weather data, and finally time-series data where each record is a series of measurements taken over time. Unstructured data is some of the hardest to process, and arguably the most interesting. Examples of unstructured data are freeform text (e.g. tweets, movie reviews, etc.), generally written by consumers intended for other consumers.
+  </p>
+  <p>
+    In each type of data there are different kinds of attributes. These attributes fall into two general categories: categorical (qualitative) and numeric (quantative). Categorical attributes are used to categorize data and are expressed as 'nominal' and 'ordinal'. Nominal attributes are values such as zip codes, id-codes, genders, etc. and exist as labels versus measurable data. Ordinal data are generally discrete attributes such aas hardness, grades, which provide some ranked order or at least taxonomy. Numeric attributes are also interesting, interval data is defined as dates, temperature and other similar attributes. Ratio data is also numeric and includes age, lengths, incomes, prices, and other such numbers.
+  </p>
+  <p>
+    In thinking of data as something a little more defined than "text" and "numbers" we get a few unintentional and welcome side-effects. Temporal autocorrelation allows us to take time-series data and interpolate missing values given that the data is not too far apart. Spatial autocorrelation is a similar concept, measurements taken in close proximity to each other (such as temperature or humidity data) are often quite similar to each other.
   </p>
 
   <h3>Data Quality</h3>
   <p>
+    
   </p>
 
   <h3>Exploring Data</h3>
