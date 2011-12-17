@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Application: Badges</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="Michael Rose" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Application: Classic Mushroom Dataset</h1>
+  <h2>Data</h2>
+  <p>
+    The first step in using this data was to preprocess the CSV datafile and add column headings to each for ease of use in KNIME. Additionally, Weka will explode without column heading. In Weka, the summary statistics were relatively useful in determining the usefulness of various attributes. Veil-type and veil-color are nearly worthless. Veil-types are all ‘partial’, and veil-color was almost all white with a few yellow, orange, and brown.
+  </p>
+
+  <h2>Classification</h2>
+  <p>
+    The first attempt at classification, a Naïve Bayes classifier, worked relatively well achieving 95.8% accuracy. After generating association rules, classification was relatively simple to improve upon the accuracy of the classifier. Noting the extremely high correlations of association rules, the Ripper (JRip) algorithm was used to build a classifier with 100% accuracy in classifying the dataset.
+  </p>
+
+  <h2>Clustering</h2>
+  <p>
+    Clustering this dataset given all the ordinal data is relatively difficult. Ideally, we could create some sort of taxonomy through hierarchal clustering. Without sampling the data, it was relatively infeasible to run a hierarchal clustering. The Weka implementation of the hierarchal clusterer ate past 4GB of JVM Heapsize. Simple K-means with Euclidean Distance or Manhattan Distance both returned 41%/59% for each cluster, unfortunately with 37.62% of instances misclassified. DBScan ran for several minutes with an eps=2, minPoints=6 and created 16 clusters. Clustering is somewhat of a dead-end for this dataset as given, by generating each of the columns as a binary attribute it may work to cluster this dataset. Unfortunately, ordinal data is somewhat hard to cluster. 
+  </p>
+
+  <h2>Association Analysis</h2>
+  <p>
+    When generating rules, it was noted that the confidences of the rules found grew with the number of rules found, showing that there were many good rules of high confidence not found in the initial rule generation of k=10 rules, k=100 rules. With a rule generation of 10,000, all were found above 0.97 confidence. While many rules may not be worthwhile, this is a good indication of being able to successfully use a rule-based classifier. By using summary statistics, it's easy to filter for rules that make sense, versus rules which may have a support near 1.0, but in practice mean little.
+  </p>
+
+  <h2>Anomaly Detection</h2>
+  <p>
+    Density-based anomaly detection doesn’t seem to find any noise, or when it does, there are nearly 21 clusters. This doesn’t necessarily imply that there are no anomalies. A statistical approach is nearly impossible, Gaussian distributions have little meaning in this dataset due to the lack of continuous values.
+  </p>
+</div>
+</body>
+</html>
