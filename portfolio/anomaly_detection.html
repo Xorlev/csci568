@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Anomaly Detection: Michael Rose</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Data Mining Portfolio: Michael Rose</h1>
+  <h2>Anomaly Detection</h2>
+  <p class="introduction"></p>
+  <h3>Statistical Approach</h3>
+  <p>
+    By detecting anomalies using statistics, we are building a statistical model describing the ideal or prospective rules upon which our data is expected to fit, and then evaluates our data and throws out data we don't expect (such as outliers). One popular approach is plotting data with respect to Gaussian distributions and determining the mean and std-dev, if the mean is 0 an the std-dev is 1 we know this is an outlier. Mixture models can also be used, mixing in multiple distributions and combining probabilities, or mixing a good model and anomalous model and seeing how well the data stacks up agains both.
+  </p>
+  <h3>Density Approach</h3>
+  <p>
+    The density approach is implementing the DBSCAN approach of using minpoints and epsilon in order to find points which don't fit in clusters. Noise points found using DBSCAN can be scrutinized and determined to be anomalous or not. Alternatively, calculating the density of the region a current point is in can become a relative score used to determine how far outside the general scope of the data a point is. Low-density regions are much more likely to be anomalous data.
+  </p>
+  <h3>Proximity Approach</h3>
+  <p>
+    By simple proximity, a point which is not like other points can generally be written off as anomalous data. A k nearest neighbors approach can be used in order to easily find this kind of data. If a point is not included in a cluster with at least k objects, it can be classified as anomalous. Unfortunately, k is a sensitive value, too large and most data can be marked as anomalous and too small and nothing will be marked.
+  </p>
+  <h3>Clustering Approach</h3>
+  <p>
+    Finally, clustering can be used in order to help determine anomalous data. Using a k-means approach, similar to a proximity approach of using k-nn. One issue is criteria, chosing criteria for a cluster is a difficult task (such as the number of points which make a minimum cluster). A popular approach is running k-means on a set of data and then determining how well each data point fits into the clusters found by the algorithm. This approach is efficient, unlike density which can be incredibly computationally intensive. Clustering and anomalous data generally go hand in hand, clusters by definition hopefully exclude strange data. Cluster quality can be affected by anomalous data but in general is a useful tool to help filter data.ß
+  </p>
+</div>
+</body>
+</html>
