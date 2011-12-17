@@ -26,11 +26,20 @@
   <script src="http://gist-it.appspot.com/github/Xorlev/csci568/raw/master/project05/kmeans.rb"></script>
   <h3>Agglomerative Hierarchical</h3>
   <p>
-    Agglomerative Hierarchical clustering is an interesting approach quite different from K-Means. Instead of using some kind of tolerance to determine 
+    Agglomerative Hierarchical clustering is an interesting approach quite different from K-Means. Instead of using some kind of tolerance to determine when to end the clustering process, this clustering algorithm takes the approach of clustering everything one step at a time.
   </p>
-  <h3>DBScan</h3>
   <p>
-    ...
+    <img alt="Hierarchical Clustering Example w/ Dendrogram" src="images/clustering/hclust-example.png" />
+  </p>
+  <p>
+    As can be seen on the right, the algorithm finds points closest to each other, groups them. Finds groups closest to each other, groups them into greater and greater supersets until the entire set of points is clustered. This data can then be represented as a dendrogram (tree structure) as shown to the left.
+  </p>
+  <h3>DBSCAN</h3>
+  <p>
+    DBSCAN is an acronym for the method known as density-based spatial clustering of applications with noise. At the title may suggest, DBSCAN is an algorithm designed to deal with noisy data, unlike K-Means. DBSCAN works by picking an arbitrary point and checking if there is a minimum number of points (minPts) within some search radius epsilon (e). If there are, a cluster is started or else the point is labelled as noise. Points with both minPts within e and are also reachable through other points are core points, and those points reachable by other clusters but not having minPts are called edge points. This allows the algorithm to create non-uniform clusters (as seen below) using the density of the data.
+  </p>
+  <p>
+    <img alt="Wikipedia visualization of DBSCAN algorithm" src="images/clustering/dbscan.png" />
   </p>
 </div>
 </body>
