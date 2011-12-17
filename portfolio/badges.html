@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Application: Badges</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="Michael Rose" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Application: Badges</h1>
+  <h2>Problem</h2>
+  <p>
+    Given a dataset, determine why or why not a user is a 'winner' or a 'loser'.
+  </p>
+  <h2>Approach</h2>
+  <p>
+    It was a Thursday night. Lightning flashed in the distance as one man struggled against the might of his data mining assignment. The clock struck twelve and the data revealed no more. Beer had come and gone and yet no flash of inspiration had struck the intrepid student.
+  </p>
+
+  <p>
+    I even considered taking a leaf out of Natural Language Processing’s book and generating ngrams of each name. A unigram may have actually worked, in hindsight. After thinking about it for some time, I decided to play with the position of vowels in the data when I noticed that there was a rather large occurrence of vowels in the second character of the winners. Using an irb session, I generated the true/false associated with each datapoint. It would no longer read in Weka, so I switched to Knime and generated a decision tree as shown below.
+  </p>
+  <p>
+    <img alt="decision tree" src="images/badges/decision_tree.png" />
+  <p>
+    I, am a winner. I have conquered this data set, and I have a vowel for a second character.
+  </p>
+</div>
+</body>
+</html>
