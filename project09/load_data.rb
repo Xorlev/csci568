@@ -18,6 +18,8 @@ Genre.delete_all
 Artist.delete_all
 Album.delete_all
 Track.delete_all
+User.delete_all
+Rating.delete_all
 
 def split_and_filter(line)
   line.split('|').map { |f| none_or_int(f) }
@@ -53,6 +55,17 @@ File.open('track1/trackData1.txt').each do |line|
   genres.map! { |g| Genre.find(g) }
   
   Track.create! :id => track, :album_id => album, :artist_id => artist, :genres => genres
+end
+
+File.open("track1/trainIdx1.firstLines.txt").each do |line|
+  tokens = split_and_filter(line)
+  if tokens.length == 2
+    userId = tokens[0]
+    User.create(:id => userId)
+  else
+    tokens = line.split(" ")
+    Rating.create(:user_id => userId, :rating => tokens[1], :item_id => tokens[0])
+  end
 end
 
 

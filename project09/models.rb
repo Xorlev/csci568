@@ -45,3 +45,19 @@ class Track < ActiveRecord::Base
     "Track(#{id}) #{name}, Album(#{album_id}), Artist(#{artist_id})"
   end
 end
+
+class User < ActiveRecord::Base
+  has_many :ratings
+
+  attr_accessible :id
+
+  def to_s
+    "User(${id})"
+  end
+end
+
+class Rating < ActiveRecord::Base
+  belongs_to :user
+
+  attr_accessible :id, :user_id, :rating
+end
