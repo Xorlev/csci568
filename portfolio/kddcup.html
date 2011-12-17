@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+<title>Application: 2011 KDD Cup Challenge, Track 1 Sample: Michael Rose</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" /> 
+<!--[if IE]>
+  <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+</head>
+<body>
+<div class="container">
+  <h1>Data Mining Portfolio: Michael Rose</h1>
+  <h2>Application: 2011 KDD Cup Challenge, Track 1 Sample</h2>
+  <p class="introduction"></p>
+  <h3>Data Platform</h3>
+  <p>
+    At this stage of the project, the first step is to check out the data set and begin compiling statistics on the imported data. Due to the relational nature of the data, the first step was to generate a database implementing these relations. I chose to write my preprocessing script in Ruby with ActiveRecord to load data into a MySQL database. This process was extraordinarily slow (especially with SQLite), and was run overnight.
+  </p>
+  <h3>Statistics</h3>
+  <p>
+    Using the database, it was easy to find the number of each object (1391 albums, 2487 artists, 479 genres, 7295 tracks) and finding the average rating by userid. and the average rating of each track by genre by user. These allowed me to find basic numbers on each user, which could be used as a crude prediction algorithm.
+  </p>
+  <h3>Clustering</h3>
+  <p>
+    Users could be clustered given their average ratings on genres/artists/albums. This would require extra work in preprocessing the data. Another interesting statistic might be to cluster on ratings of tracks from the same genre.
+  </p>
+
+  <h3>Classification</h3>
+  <p>
+    The most useful classifier I can think of for this data is an ANN. Given the input set of data and having all tracks somewhat well represented with at least ten ratings gives a lot of input data for an ANN. Additionally, it would function well to predict scores of users as the project requires.
+  </p>
+
+  <h3>Conclusions</h3>
+  <p>
+    I would use a ANN classifier for this task as a first attempt. Perhaps this could then be made into an ensemble method combining an ANN with other classification strategies such as KNN or doing some sort of probabilistic approach. In the winner’s project slideshows, they spoke of Restricted Boltzmann Machines which are a form of recurrent neural network. They are quite a bit more complex and would require a lot of implementation to figure out.
+  </p>
+
+</div>
+</body>
+</html>
